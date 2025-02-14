@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: default;
+
+    background-color: #A4B465;
+    height: 10vh;
+    color: white;
+    text-decoration: underline rgb(100, 61, 61);
+
+    font-family: "Lobster", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.conts{
+    height: 90vh;
+    width: 100vw;
+    background-color: #FFCF50;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    overflow: auto;
+
+}
+
+.conts input{
+    margin: 10px;
+    width: 50vw;
+    height: 5vh;
+    text-align: center;
+
+    font-family: "Lobster", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.conts button{
+    height: 5vh;
+    border-radius: 15px;
+    border: none;
+    padding: 5px;
+    background-color: #A4B465;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+
+    font-family: "Lobster", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    transition-duration: .5s;
+    transition-timing-function: ease-out;
+}
+
+.conts button:hover{
+    transform: scale(0.9);
+    filter: drop-shadow(2px 5px 5px black);
+}
+
+.conts label{
+    color: #626F47;
+    padding: 5px;
+    margin: 2px;
+
+
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.conts .eventsLst{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    width: 50vw;
+    color: white;
+    margin: 10px;
+
+    font-family: "Kanit", serif;
+    font-weight: 100;
+    font-style: normal;
+}

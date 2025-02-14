@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Day History 🎊</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="top">
+        <h1>B.Day History! 🎊</h1>
+    </div>
+    <div class="conts" id="events">
+        <input type="date" id="date">
+
+        <button id="submit">SUBMIT</button>
+
+        <div class="eventsLst" id="eventsLst">
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const appender = document.getElementById("eventsLst");
+
+    const subBtn = document.getElementById("submit");
+    subBtn.addEventListener("click", function(){
+    var date = document.getElementById("date").value;
+    //console.log(date);
+    let year = date.slice(0,4);
+    let month = date.slice(5,7)
+    let day = date.slice(8,10);
+
+    $.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/historicalevents?day=' + day + '&month=' + month,
+    headers: { 'X-Api-Key': 'UMGS/64ogYd1XoBJdeffeA==icly8l89N5eOy1rW'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+
+        for (i = 0; i < 10; i++){
+            var yr = document.createElement("label");
+            yr.setAttribute("value", result[i].year);
+            yr.innerHTML = result[i].day + "/" + result[i].month + "/" + result[i].year;
+
+            var ct = document.createElement("h3");
+            ct.innerHTML = result[i].event;
+
+            appender.appendChild(yr);
+            appender.appendChild(ct);
+        }
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+});
+ 
+})
+</script>
+</html>
