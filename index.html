@@ -30,6 +30,7 @@
 
     const subBtn = document.getElementById("submit");
     subBtn.addEventListener("click", function(){
+    appender.innerHTML = "";
     var date = document.getElementById("date").value;
     //console.log(date);
     let year = date.slice(0,4);
@@ -38,22 +39,28 @@
 
     $.ajax({
     method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/historicalevents?day=' + day + '&month=' + month,
+    url: 'https://api.api-ninjas.com/v1/historicalevents?day=' + day + '&month=' + month + '&year=' + year,
     headers: { 'X-Api-Key': 'UMGS/64ogYd1XoBJdeffeA==icly8l89N5eOy1rW'},
     contentType: 'application/json',
     success: function(result) {
         console.log(result);
 
-        for (i = 0; i < 10; i++){
+        if(result.length == 0){
             var yr = document.createElement("label");
-            yr.setAttribute("value", result[i].year);
-            yr.innerHTML = result[i].day + "/" + result[i].month + "/" + result[i].year;
-
-            var ct = document.createElement("h3");
-            ct.innerHTML = result[i].event;
-
+            yr.innerHTML = "No results found! Sorry :(";
             appender.appendChild(yr);
-            appender.appendChild(ct);
+        } else{
+            for (i = 0; i < 10; i++){
+                var yr = document.createElement("label");
+                yr.setAttribute("value", result[i].year);
+                yr.innerHTML = result[i].day + "/" + result[i].month + "/" + result[i].year;
+
+                var ct = document.createElement("h3");
+                ct.innerHTML = result[i].event;
+
+                appender.appendChild(yr);
+                appender.appendChild(ct);
+            }
         }
     },
     error: function ajaxError(jqXHR) {
